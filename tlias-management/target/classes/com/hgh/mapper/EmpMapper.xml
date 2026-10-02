@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hgh.mapper.EmpMapper" >
+    <!--set标签用于更新多个字段，自动删除多余的逗号和空格 -->
+    <update id="updateById">
+        update emp
+        <set>
+            <if test="username!=null and username!=''">username = #{username},</if>
+            <if test="name!=null and name!=''">name = #{name},</if>
+            <if test="gender!=null">gender = #{gender},</if>
+            <if test="phone!=null and phone!=''">phone = #{phone},</if>
+            <if test="job!=null and job!=''">job = #{job},</if>
+            <if test="salary!=null">salary = #{salary},</if>
+            <if test="image!=null and image!=''">image = #{image},</if>
+            <if test="entryDate!=null">entry_date = #{entryDate},</if>
+            <if test="deptId!=null">dept_id = #{deptId},</if>
+            <if test="updateTime!=null">update_time = #{updateTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="deleteBatch">
+        delete from emp where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="list" resultType="com.hgh.pojo.Emp">
+        select * from emp e left join dept d on e.dept_id = d.id
+        <where>
+            <if test="name!=null and name!=''">
+                e.name like concat('%',#{name},'%')
+            </if>
+            <if test="gender!=null">
+                and e.gender=#{gender}
+            </if>
+            <if test="begin!=null and end!=null">
+                and e.entry_date between #{begin} and #{end}
+            </if>
+        </where>
+        order by e.update_time desc
+    </select>
+    <select id="countEmpJobData" resultType="java.util.Map">
+        select
+            case  when job=1 then '班主任'
+                when job=2 then '讲师'
+                when job=3 then '学工主管'
+                when job=4 then '教研主任'
+                when job=5 then '咨询师'
+                else '其他' end as job_name,
+            count(*) as emp_count
+        from emp group by job order by emp_count
+    </select>
+    <select id="countEmpGenderData" resultType="java.util.Map">
+        select
+            if(gender=1,'男性员工','女性员工') as name,
+            count(*) as value
+        from emp group by gender order by value
+    </select>
+
+</mapper>

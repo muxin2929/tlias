@@ -13,10 +13,6 @@ import java.util.UUID;
 @Component
 public class AliyunOSSOperator {
 
-    private String endpoint = "https://oss-cn-beijing.aliyuncs.com";
-    private String bucketName = "muxin-javaweb";
-    private String region = "cn-beijing";
-
     public String upload(byte[] content, String originalFilename) throws Exception {
         // 从环境变量中获取访问凭证。运行本代码示例之前，请确保已设置环境变量OSS_ACCESS_KEY_ID和OSS_ACCESS_KEY_SECRET。
         EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
@@ -31,6 +27,8 @@ public class AliyunOSSOperator {
         // 创建OSSClient实例。
         ClientBuilderConfiguration clientBuilderConfiguration = new ClientBuilderConfiguration();
         clientBuilderConfiguration.setSignatureVersion(SignVersion.V4);
+        String endpoint = "https://oss-cn-beijing.aliyuncs.com";
+        String region = "cn-beijing";
         OSS ossClient = OSSClientBuilder.create()
                 .endpoint(endpoint)
                 .credentialsProvider(credentialsProvider)
@@ -38,6 +36,7 @@ public class AliyunOSSOperator {
                 .region(region)
                 .build();
 
+        String bucketName = "muxin-javaweb";
         try {
             ossClient.putObject(bucketName, objectName, new ByteArrayInputStream(content));
         } finally {
