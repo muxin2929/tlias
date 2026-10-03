@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
 
     <name>tlias</name>
-    <description>tlias parent project</description>
 
     <modules>
         <module>tlias-parent</module>
@@ -18,9 +17,4 @@
         <module>tlias-pojo</module>
         <module>tlias-utils</module>
     </modules>
-
-    <properties>
-        <java.version>21</java.version>
-    </properties>
-
 </project>
