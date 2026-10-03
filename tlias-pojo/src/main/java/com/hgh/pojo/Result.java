@@ -1,4 +1,4 @@
-package pojo;
+package com.hgh.pojo;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class Result {
 
-    private Integer code; //编码：1成功，0为失败
+    private Integer code; //编码，1成功，0为失败
     private String msg; //错误信息
     private Object data; //数据
 

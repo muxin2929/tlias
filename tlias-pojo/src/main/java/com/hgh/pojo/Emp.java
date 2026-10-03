@@ -1,4 +1,4 @@
-package pojo;
+package com.hgh.pojo;
 
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class Emp {
     private String username; //用户名
     private String password; //密码
     private String name; //姓名
-    private Integer gender; //性别, 1:男, 2:女
+    private Integer gender; //性别, 1:男 2:女
     private String phone; //手机号
     private Integer job; //职位, 1:班主任,2:讲师,3:学工主管,4:教研主管,5:咨询师
     private Integer salary; //薪资
