@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.hgh</groupId>
-        <artifactId>tlias</artifactId>
+        <artifactId>tlias-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>../tlias-parent/pom.xml</relativePath>
     </parent>
+
     <artifactId>tlias-management</artifactId>
-    <name>tlias-management</name>
-    <description>tlias-management</description>
+
     <url/>
     <licenses>
         <license/>
@@ -40,11 +40,7 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webmvc-test</artifactId>

@@ -4,13 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.8</version>
-        <relativePath/>
-    </parent>
-
     <groupId>com.hgh</groupId>
     <artifactId>tlias</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -20,6 +13,7 @@
     <description>tlias parent project</description>
 
     <modules>
+        <module>tlias-parent</module>
         <module>tlias-management</module>
         <module>tlias-pojo</module>
         <module>tlias-utils</module>
@@ -28,20 +22,5 @@
     <properties>
         <java.version>21</java.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>com.hgh</groupId>
-                <artifactId>tlias-pojo</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.hgh</groupId>
-                <artifactId>tlias-utils</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
 </project>
